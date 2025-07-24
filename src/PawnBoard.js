@@ -1,30 +1,30 @@
-// App.tsx - Pawn Move Visualizer
-import React, { useState } from "react";
-import "./styles.css";
+import React from "react";
 
 const boardSize = 8;
 
-type Position = [number, number] | null;
-
-export default function App() {
-  const [hovered, setHovered] = useState<Position>(null);
-
+export default function PawnBoard({ hovered, setHovered }) {
   return (
+
     <div className="board">
+      {}
       {Array.from({ length: boardSize }).map((_, row) =>
+
         Array.from({ length: boardSize }).map((_, col) => {
+
           const isHovered = hovered && hovered[0] === row && hovered[1] === col;
 
-          let isPawnMove = false;
+          let isPawnMove = false; 
           if (hovered) {
-            const [hoverRow, hoverCol] = hovered;
-            // White pawn (moving upward)
+            const [hoverRow, hoverCol] = hovered; 
+
             if (hoverRow > 0 && hoverRow < 8) {
+
               if (hoverRow === 6) {
                 isPawnMove =
-                  (row === hoverRow - 1 || row === hoverRow - 2) &&
-                  col === hoverCol;
+                  (row === hoverRow - 1 || row === hoverRow - 2) && 
+                  col === hoverCol; 
               } else {
+
                 isPawnMove = row === hoverRow - 1 && col === hoverCol;
               }
             }
@@ -34,13 +34,13 @@ export default function App() {
 
           return (
             <div
-              key={`${row}-${col}`}
-              role="gridcell"
+              key={`${row}-${col}`} 
+              role="gridcell" 
               className={`cell ${isLight ? "light" : "dark"} ${
                 isHovered ? "hovered" : isPawnMove ? "pawn-move" : ""
-              }`}
-              onMouseEnter={() => setHovered([row, col])}
-              onMouseLeave={() => setHovered(null)}
+              }`} 
+              onMouseEnter={() => setHovered([row, col])} 
+              onMouseLeave={() => setHovered(null)} 
             />
           );
         })
