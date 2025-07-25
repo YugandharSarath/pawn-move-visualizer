@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import "./styles.css"; 
-import PawnBoard from "./PawnBoard"; 
+import PawnBoard from "./PawnBoard";
+import "./styles.css";
 
 export default function App() {
-
   const [hovered, setHovered] = useState(null);
 
   return (
-
-    <PawnBoard hovered={hovered} setHovered={setHovered} />
+    <div className="App">
+      <h1>♙ Pawn Move Visualizer</h1>
+      <PawnBoard hovered={hovered} setHovered={setHovered} />
+    </div>
   );
 }
